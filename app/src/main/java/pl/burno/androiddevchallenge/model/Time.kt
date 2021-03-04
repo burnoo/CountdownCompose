@@ -1,7 +1,7 @@
-package com.example.androiddevchallenge.model
+package pl.burno.androiddevchallenge.model
 
 import androidx.annotation.IntRange
-import com.example.androiddevchallenge.ui.model.UiTime
+import pl.burno.androiddevchallenge.ui.model.UiTime
 
 data class Time(
     @IntRange(from = 0, to = 99) val minutes: Int,

@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.ui.components
+package pl.burno.androiddevchallenge.ui.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding

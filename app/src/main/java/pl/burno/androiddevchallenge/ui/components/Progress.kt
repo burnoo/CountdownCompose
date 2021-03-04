@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.ui.components
+package pl.burno.androiddevchallenge.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.aspectRatio

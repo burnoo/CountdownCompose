@@ -1,12 +1,12 @@
-package com.example.androiddevchallenge
+package pl.burno.androiddevchallenge
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androiddevchallenge.model.Time
-import com.example.androiddevchallenge.model.toUiTime
-import com.example.androiddevchallenge.ui.model.UiTime
-import com.example.androiddevchallenge.ui.model.UiTimePosition
-import com.example.androiddevchallenge.ui.model.UiTimePosition.*
+import pl.burno.androiddevchallenge.model.Time
+import pl.burno.androiddevchallenge.model.toUiTime
+import pl.burno.androiddevchallenge.ui.model.UiTime
+import pl.burno.androiddevchallenge.ui.model.UiTimePosition
+import pl.burno.androiddevchallenge.ui.model.UiTimePosition.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

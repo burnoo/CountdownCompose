@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge.ui.model
+package pl.burno.androiddevchallenge.ui.model
 
 import androidx.annotation.IntRange
 

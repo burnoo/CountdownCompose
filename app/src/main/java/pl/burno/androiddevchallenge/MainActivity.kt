@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package pl.burno.androiddevchallenge
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -22,8 +22,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.ui.components.MainScreen
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import pl.burno.androiddevchallenge.ui.components.MainScreen
+import pl.burno.androiddevchallenge.ui.theme.AppTheme
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
