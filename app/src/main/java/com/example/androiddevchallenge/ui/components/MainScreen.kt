@@ -18,15 +18,16 @@ import com.example.androiddevchallenge.ui.model.UiTimePosition
 fun MainScreen() {
     val viewModel = viewModel<MainViewModel>()
     val timeSetterState = viewModel.currentUiTime.collectAsState()
-
     val isRunning = viewModel.isRunning.collectAsState()
+    val progress = viewModel.progress.collectAsState()
 
     MainLayout(
-        timeSetterState.value,
+        time = timeSetterState.value,
         isRunning = isRunning.value,
-        viewModel::onUp,
-        viewModel::onDown,
-        viewModel::onStartStop
+        progress = progress.value,
+        onUp = viewModel::onUp,
+        onDown = viewModel::onDown,
+        onStartStop = viewModel::onStartStop
     )
 }
 
@@ -35,6 +36,7 @@ fun MainScreen() {
 fun MainLayout(
     time: UiTime = UiTime(),
     isRunning: Boolean = false,
+    progress: Float = 0.33f,
     onUp: (UiTimePosition) -> Unit = {},
     onDown: (UiTimePosition) -> Unit = {},
     onStartStop: () -> Unit = {},
@@ -49,5 +51,6 @@ fun MainLayout(
             isRunning = isRunning,
             onClick = onStartStop
         )
+        Progress(value = progress)
     }
 }

@@ -37,6 +37,11 @@ data class Time(
     private fun Int.minusUnit() = (this / 10 * 10) + (this + 10 - 1) % 10
     private fun Int.minusTen(maxExclusive: Int = 10) =
         (this / 10 + maxExclusive - 1) % maxExclusive * 10 + this % 10
+
+    operator fun div(time: Time): Float {
+        if (isZero) return 0f
+        return (minutes * 60 + seconds).toFloat() / (time.minutes * 60 + time.seconds)
+    }
 }
 
 fun Time.toUiTime(): UiTime = UiTime(
