@@ -1,6 +1,8 @@
 package com.example.androiddevchallenge
 
 import androidx.lifecycle.ViewModel
+import com.example.androiddevchallenge.model.Time
+import com.example.androiddevchallenge.model.toUiTime
 import com.example.androiddevchallenge.ui.model.UiTime
 import com.example.androiddevchallenge.ui.model.UiTimePosition
 import com.example.androiddevchallenge.ui.model.UiTimePosition.*
@@ -8,37 +10,32 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel : ViewModel() {
-    private val _currentSetterTime = MutableStateFlow(UiTime())
-    val currentSetterTime: StateFlow<UiTime> = _currentSetterTime
+    private var currentTime = Time(minutes = 0, seconds = 0)
+        set(value) {
+            field = value
+            _currentUiTime.value = value.toUiTime()
+        }
+    private val _currentUiTime = MutableStateFlow(currentTime.toUiTime())
+    val currentUiTime: StateFlow<UiTime> = _currentUiTime
 
     private val _isRunning = MutableStateFlow(true)
     val isRunning: StateFlow<Boolean> = _isRunning
 
     fun onUp(position: UiTimePosition) {
-        val currentSetterTime = _currentSetterTime.value
-        _currentSetterTime.value = when (position) {
-            SECONDS_UNITS -> currentSetterTime
-                .copy(secondUnits = (currentSetterTime.secondUnits + 1) % 10)
-            SECONDS_TENS -> currentSetterTime
-                .copy(secondTens = (currentSetterTime.secondTens + 1) % 6)
-            MINUTE_UNITS -> currentSetterTime
-                .copy(minuteUnits = (currentSetterTime.minuteUnits + 1) % 10)
-            MINUTE_TENS -> currentSetterTime
-                .copy(minuteTens = (currentSetterTime.minuteTens + 1) % 10)
+        currentTime = when (position) {
+            SECONDS_UNITS -> currentTime.addSecondsUnit()
+            SECONDS_TENS -> currentTime.addSecondsTen()
+            MINUTE_UNITS -> currentTime.addMinutesUnit()
+            MINUTE_TENS -> currentTime.addMinutesTen()
         }
     }
 
     fun onDown(position: UiTimePosition) {
-        val currentSetterTime = _currentSetterTime.value
-        _currentSetterTime.value = when (position) {
-            SECONDS_UNITS -> currentSetterTime
-                .copy(secondUnits = (currentSetterTime.secondUnits + 9) % 10)
-            SECONDS_TENS -> currentSetterTime
-                .copy(secondTens = (currentSetterTime.secondTens + 5) % 6)
-            MINUTE_UNITS -> currentSetterTime
-                .copy(minuteUnits = (currentSetterTime.minuteUnits + 9) % 10)
-            MINUTE_TENS -> currentSetterTime
-                .copy(minuteTens = (currentSetterTime.minuteTens + 9) % 10)
+        currentTime = when (position) {
+            SECONDS_UNITS -> currentTime.minusSecondsUnit()
+            SECONDS_TENS -> currentTime.minusSecondsTen()
+            MINUTE_UNITS -> currentTime.minusMinutesUnit()
+            MINUTE_TENS -> currentTime.minusMinutesTen()
         }
     }
 

@@ -17,7 +17,7 @@ import com.example.androiddevchallenge.ui.model.UiTimePosition
 @Composable
 fun MainScreen() {
     val viewModel = viewModel<MainViewModel>()
-    val timeSetterState = viewModel.currentSetterTime.collectAsState()
+    val timeSetterState = viewModel.currentUiTime.collectAsState()
 
     val isRunning = viewModel.isRunning.collectAsState()
 
@@ -43,7 +43,7 @@ fun MainLayout(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        TimeSetter(time = time, isEnabled = !isRunning, onUp = onUp, onDown = onDown)
+        Timer(time = time, isEnabled = !isRunning, onUp = onUp, onDown = onDown)
         StartStopButton(
             modifier = Modifier.padding(top = 232.dp),
             isRunning = isRunning,
