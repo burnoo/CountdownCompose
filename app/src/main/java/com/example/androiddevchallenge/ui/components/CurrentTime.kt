@@ -12,10 +12,10 @@ import com.example.androiddevchallenge.ui.model.UiTime
 @Composable
 fun CurrentTime(time: UiTime = UiTime(0, 0)) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Text(time.firstDigit.toString(), style = MaterialTheme.typography.h3)
-        Text(time.secondDigit.toString(), style = MaterialTheme.typography.h3)
+        Text(time.minuteTens.toString(), style = MaterialTheme.typography.h3)
+        Text(time.minuteUnits.toString(), style = MaterialTheme.typography.h3)
         Text(text = ":", style = MaterialTheme.typography.h3)
-        Text(time.thirdDigit.toString(), style = MaterialTheme.typography.h3)
-        Text(time.fourthDigit.toString(), style = MaterialTheme.typography.h3)
+        Text(time.secondTens.toString(), style = MaterialTheme.typography.h3)
+        Text(time.secondUnits.toString(), style = MaterialTheme.typography.h3)
     }
 }

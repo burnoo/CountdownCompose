@@ -20,16 +20,15 @@ fun NumberCounterPreview() {
     val count = remember { mutableStateOf(0) }
     NumberSetter(
         count.value,
-        onUp = { count.value = (count.value + 1) % 10 },
-        onDown = { count.value = (count.value + 9) % 10 }
-    )
+        onUp = { count.value = (count.value + 1) % 10 }
+    ) { count.value = (count.value + 9) % 10 }
 }
 
 @Composable
 fun NumberSetter(
     count: Int = 0,
-    onDown: () -> Unit = {},
-    onUp: () -> Unit = {}
+    onUp: () -> Unit = {},
+    onDown: () -> Unit = {}
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         IconButton(onClick = onUp) {
