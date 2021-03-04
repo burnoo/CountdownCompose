@@ -20,16 +20,17 @@ class MainViewModel : ViewModel() {
             _currentUiTime.value = value.toUiTime()
         }
     private var startTime: Time = currentTime
+
     private val _currentUiTime = MutableStateFlow(currentTime.toUiTime())
     val currentUiTime: StateFlow<UiTime> = _currentUiTime
 
     private val _isRunning = MutableStateFlow(false)
     val isRunning: StateFlow<Boolean> = _isRunning
 
-    private var tickerJob: Job? = null
-
     private val _progress = MutableStateFlow(0f)
     val progress: StateFlow<Float> = _progress
+
+    private var tickerJob: Job? = null
 
     fun onUp(position: UiTimePosition) {
         currentTime = when (position) {
