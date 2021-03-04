@@ -12,6 +12,8 @@ data class Time(
         require(seconds in 0..59)
     }
 
+    val isZero = minutes == 0 && seconds == 0
+
     fun tickDown(): Time = when {
         seconds > 0 -> copy(seconds = seconds - 1)
         minutes > 0 -> copy(minutes = minutes - 1, seconds = 59)
