@@ -27,7 +27,8 @@ fun MainScreen() {
         progress = progress.value,
         onUp = viewModel::onUp,
         onDown = viewModel::onDown,
-        onStartStop = viewModel::onStartStop
+        onStartStop = viewModel::onStartStop,
+        onReset = viewModel::onReset
     )
 }
 
@@ -40,16 +41,18 @@ fun MainLayout(
     onUp: (UiTimePosition) -> Unit = {},
     onDown: (UiTimePosition) -> Unit = {},
     onStartStop: () -> Unit = {},
+    onReset: () -> Unit = {},
 ) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
         Timer(time = time, isEnabled = !isRunning, onUp = onUp, onDown = onDown)
-        StartStopButton(
-            modifier = Modifier.padding(top = 232.dp),
+        Buttons(
+            modifier = Modifier.padding(top = 212.dp),
             isRunning = isRunning,
-            onClick = onStartStop
+            onStartStopClick = onStartStop,
+            onResetClick = onReset
         )
         Progress(value = progress)
     }

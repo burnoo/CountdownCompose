@@ -39,6 +39,7 @@ data class Time(
         (this / 10 + maxExclusive - 1) % maxExclusive * 10 + this % 10
 
     operator fun div(time: Time): Float {
+        if (time.isZero) return 1f
         if (isZero) return 0f
         return (minutes * 60 + seconds).toFloat() / (time.minutes * 60 + time.seconds)
     }
