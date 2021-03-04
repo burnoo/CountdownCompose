@@ -22,7 +22,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.ui.components.TimeSetter
+import com.example.androiddevchallenge.ui.components.MainScreen
 import com.example.androiddevchallenge.ui.theme.AppTheme
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun App() {
     Surface(color = MaterialTheme.colors.background) {
-        TimeSetter()
+        MainScreen()
     }
 }
 

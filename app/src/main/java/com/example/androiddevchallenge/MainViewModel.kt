@@ -11,6 +11,9 @@ class MainViewModel : ViewModel() {
     private val _currentSetterTime = MutableStateFlow(UiTime())
     val currentSetterTime: StateFlow<UiTime> = _currentSetterTime
 
+    private val _isRunning = MutableStateFlow(true)
+    val isRunning: StateFlow<Boolean> = _isRunning
+
     fun onUp(position: UiTimePosition) {
         val currentSetterTime = _currentSetterTime.value
         _currentSetterTime.value = when (position) {

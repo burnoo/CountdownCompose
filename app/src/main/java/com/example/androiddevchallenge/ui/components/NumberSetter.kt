@@ -1,5 +1,6 @@
 package com.example.androiddevchallenge.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
@@ -27,16 +29,22 @@ fun NumberCounterPreview() {
 @Composable
 fun NumberSetter(
     count: Int = 0,
+    isEnabled: Boolean = true,
     onUp: () -> Unit = {},
     onDown: () -> Unit = {}
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        IconButton(onClick = onUp) {
-            Icon(Icons.Default.ArrowDropUp, contentDescription = "Icon Up")
-        }
+        NumberSetterIcon(Icons.Default.ArrowDropUp, callback = onUp, isEnabled)
         Text(count.toString(), style = MaterialTheme.typography.h3)
-        IconButton(onClick = onDown) {
-            Icon(Icons.Default.ArrowDropDown, contentDescription = "Icon Up")
+        NumberSetterIcon(Icons.Default.ArrowDropDown, callback = onDown, isEnabled)
+    }
+}
+
+@Composable
+fun NumberSetterIcon(icon: ImageVector, callback: () -> Unit = {}, isEnabled: Boolean) {
+    AnimatedVisibility(visible = isEnabled) {
+        IconButton(onClick = callback, enabled = isEnabled) {
+            Icon(icon, contentDescription = "Icon Up")
         }
     }
 }
