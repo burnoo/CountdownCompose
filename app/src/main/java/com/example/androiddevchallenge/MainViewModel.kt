@@ -41,4 +41,8 @@ class MainViewModel : ViewModel() {
                 .copy(minuteTens = (currentSetterTime.minuteTens + 9) % 10)
         }
     }
+
+    fun onStartStop() {
+        _isRunning.value = !_isRunning.value
+    }
 }
